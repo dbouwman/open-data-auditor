@@ -1,0 +1,69 @@
+<div class="row">
+<h2>Dataset: {{dataset.name}}</h2>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <h3>Dataset Description</h3>
+    <pre>{{ dataset.description | json }}</pre>
+  </div>
+  <div class="col-md-6">
+    <h3>Item Description</h3>
+    <pre>{{ item.description | json }}</pre>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h3>Dataset Fields</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Alias</td>
+          
+        </tr>
+      </thead>
+    <tr ng-repeat="datasetField in dataset.fields | orderBy:name:false">
+      <td>{{datasetField.name}}</td>
+      <td>{{datasetField.alias}}</td>
+      
+    </tr>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <h3>Layer Fields</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Alias</td>
+         
+        </tr>
+      </thead>
+    <tr ng-repeat="layerField in layer.fields | orderBy:name:false">
+      <td>{{layerField.name}}</td>
+      <td>{{layerField.alias}}</td>
+     
+    </tr>
+    </table>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <h2>Extent Comparisons</h2>
+  <p>The Dataset extent is harvested from the Service, and projected into Geographic using a geometry service.</p>
+  <div class="col-md-4">
+    <h3>Dataset </h3>
+    <pre>{{ dataset.extent | json }}</pre>
+  </div>
+  <div class="col-md-4">
+    <h3>AGOL Item </h3>
+    <pre>{{ item.extent | json }}</pre>
+  </div>
+  <div class="col-md-4">
+    <h3>Service </h3>
+    <pre>{{ layer.extent | json }}</pre>
+  </div>
+</div>
